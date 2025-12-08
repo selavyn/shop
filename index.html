@@ -267,18 +267,32 @@
 
     let buffer = "";
 
+    const imgMaxime = "https://cdn.discordapp.com/attachments/1427699662139297855/1447253609933705367/image.png?ex=6936f375&is=6935a1f5&hm=766ea019140ff0d4ff09f7995a7cd3c84135ee82c59897c30d5fd4c540ad7bf0&";
+    const imgPatapim = "https://cdn.discordapp.com/attachments/1443729422736822305/1447642563136848105/WhatsApp_Image_2025-12-08_a_18.34.01_7b09cd5e.jpg?ex=69385db2&is=69370c32&hm=b5738e4b88c272b1074935af5ff78f22e59096ae2408560901d7c4c698aac9ee&";
+    const imgCassecouille = "https://cdn.discordapp.com/attachments/1443729422736822305/1447643015090012321/image.png?ex=69385e1e&is=69370c9e&hm=479072943983fd4562ea9adfb9347546a65171506c1ae17880f1335f6154685d&"
+
     document.addEventListener("keydown", (e) => {
       buffer += e.key.toLowerCase();
 
-      if (buffer.length > 6) {
-        buffer = buffer.slice(buffer.length - 6);
+      // on limite la mémoire du buffer pour éviter qu'il devienne trop long
+      if (buffer.length > 7) {
+        buffer = buffer.slice(buffer.length - 7);
       }
 
-      if (buffer === "maxime") {
-        const newImageUrl = "https://cdn.discordapp.com/attachments/1427699662139297855/1447253609933705367/image.png?ex=6936f375&is=6935a1f5&hm=766ea019140ff0d4ff09f7995a7cd3c84135ee82c59897c30d5fd4c540ad7bf0&";
+      if (buffer.includes("maxime")) {
+        document.querySelectorAll("img").forEach(img => {
+          img.src = imgMaxime;
+        });
+      }
 
-        document.querySelectorAll("img").forEach((img) => {
-          img.src = newImageUrl;
+      if (buffer.includes("fdp")) {
+        document.querySelectorAll("img").forEach(img => {
+          img.src = imgPatapim;
+        });
+      }
+      if (buffer.includes("cassecouille")) {
+        document.querySelectorAll("img").forEach(img => {
+          img.src = imgCassecouille;
         });
       }
     });
